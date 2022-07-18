@@ -1,0 +1,53 @@
+header {
+    display: flex;
+    margin-bottom: 1%;
+}
+/*styling ffor link to high-score page**/
+a:link {
+    text-decoration: none;
+    display: flex;
+    width: 49%;
+}
+/*styling for timer**/
+#timer {
+    display: flex;
+    width: auto;
+    width: 49%;
+    justify-content: right;
+}
+/*styling for box containing quiz questions**/
+#quizBox {
+    display: inline-block;
+}
+/*styling for main sections of index and highscore pages**/
+#hsMain, main {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0; left: 0; bottom: 50%; right: 0;
+}
+/*styling for box containing highscore info on high-scores page**/
+#highScores {
+    display: inline-block;
+}
+/**styling for different media types/screen sizes**/
+@media (max-width: 690px) {
+    header {
+        font-size: 0.9em;
+    }
+  }
+  
+@media (max-width: 500px) { 
+    #quizbox, #timer, a:link {
+        justify-content: center;
+        align-content: center;
+        margin: auto;
+        margin-bottom: 5px;  
+    }
+    header {
+        display: block;
+        font-size: 0.8rem;
+    }
+}
