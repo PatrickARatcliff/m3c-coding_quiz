@@ -24,7 +24,7 @@ for (let index = 0; index < userInfoObj.length; index++) {
   var scoreLi = userInfoObj[index];
   for (let i = 0; i < scoreLi.length; i++) {
     var nameScore = scoreLi[i].join(" ");
-    var list = document.createElement('ol');
+    var list = document.createElement('ul');
     title.appendChild(list);
     var listItem = document.createElement('li');
     var li = nameScore;  
@@ -49,7 +49,6 @@ title.setAttribute("style", "text-align: left");
 */
 function highScores() {
   highScoresEl.appendChild(title);
-  
   highScoresEl.appendChild(goBackBtn);
   highScoresEl.appendChild(clearBtn);
   goBackBtn.after(clearBtn);
@@ -71,7 +70,7 @@ goBackBtn.addEventListener("click", function (event) {
 clearBtn.addEventListener("click", function (event) {
   event.preventDefault(); 
   localStorage.clear();
-  //title.replaceChildren();  
+  listItem.replaceChildren();
 });
 
 highScores();

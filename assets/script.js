@@ -3,7 +3,7 @@ var timerEl = document.getElementById('timer');
 var quizEl = document.getElementById('quizBox');
 
 var score = 0;
-var timeLeft = 15;
+var timeLeft = 75;
 
 //create and style message onload
 var startMessage = document.createElement("h2");
@@ -27,7 +27,7 @@ nameForm.setAttribute("action", "submit.php");
 var allDoneMessage = document.createElement("h2");
 allDoneMessage.textContent = "All Done!";
 var scoreMessage = document.createElement("p");
-scoreMessage.textContent = "Your score is: " + score;
+//scoreMessage.textContent = "Your score is: " + score;
 //create and style input field
 var inputName = document.createElement("input");
 inputName.setAttribute("type", "text");
@@ -58,7 +58,7 @@ function displayStart () {
 //QUESTION 1
 //question 1 variables, content, styling
 var question1 = document.createElement("h2");
-question1.textContent = "Commonly used dat types DO NOT include:";
+question1.textContent = "Commonly used data types DO NOT include:";
 question1.setAttribute("style", "text-align: left");
 var answer101Btn = document.createElement("button");
 answer101Btn.innerHTML = "1. strings";
@@ -155,28 +155,95 @@ function displayQuiz2 () {
     event.preventDefault();
     if (event.target === answer201Btn) {
       timeLeft = timeLeft - 10;
-      //displayQuiz3(); 
+      displayQuiz3(); 
     }; 
 });
   answer202Btn.addEventListener("click", function (event) {
     event.preventDefault();
     if (event.target === answer202Btn) {
       score = score + 10;
-      //displayQuiz3(); 
+      displayQuiz3(); 
     }; 
 });
   answer203Btn.addEventListener("click", function (event) {
       event.preventDefault();
       if (event.target === answer203Btn) {
         timeLeft = timeLeft - 10;
-        //displayQuiz3(); 
+        displayQuiz3(); 
       }; 
   });
   answer204Btn.addEventListener("click", function (event) {
     event.preventDefault();
     if (event.target === answer204Btn) {
       timeLeft = timeLeft - 10;
-      //displayQuiz3(); 
+      displayQuiz3(); 
+    }; 
+});
+};
+
+//QUESTION 3
+//question 3 variables, content, styling
+var question3 = document.createElement("h2");
+question3.textContent = "A very useful tool used during development and debugging for printing content to the debugger is:";
+question3.setAttribute("style", "text-align: left");
+var answer301Btn = document.createElement("button");
+answer301Btn.innerHTML = "1. JavaScript";
+answer301Btn.type = "answer";
+answer301Btn.name = "answer301";
+var answer302Btn = document.createElement("button");
+answer302Btn.innerHTML = "2. terminal/bash";
+answer302Btn.type = "answer";
+answer302Btn.name = "answer302";
+var answer303Btn = document.createElement("button");
+answer303Btn.innerHTML = "3. for loops";
+answer303Btn.type = "answer";
+answer303Btn.name = "answer303";
+var answer304Btn = document.createElement("button");
+answer304Btn.innerHTML = "4. console.log";
+answer304Btn.type = "answer";
+answer304Btn.name = "answer304";
+//card displayed for question 3
+//
+function displayQuiz3 () {
+  quizEl.replaceChildren();
+  quizEl.setAttribute("style", "disply: block")
+  quizEl.appendChild(question3);
+  quizEl.appendChild(answer301Btn);
+  quizEl.appendChild(answer302Btn);
+  quizEl.appendChild(answer303Btn);
+  quizEl.appendChild(answer304Btn);
+  quizEl.setAttribute("style", "text-align: left");
+
+  answer301Btn.addEventListener("click", function (event) {
+    event.preventDefault();
+    if (event.target === answer301Btn) {
+      timeLeft = timeLeft - 10;
+      scoreMessage.textContent = "Your score is: " + score;
+      displayAllDone(); 
+    }; 
+});
+  answer302Btn.addEventListener("click", function (event) {
+    event.preventDefault();
+    if (event.target === answer302Btn) {
+      timeLeft = timeLeft - 10;
+      scoreMessage.textContent = "Your score is: " + score;
+      displayAllDone(); 
+    }; 
+});
+  answer303Btn.addEventListener("click", function (event) {
+      event.preventDefault();
+      if (event.target === answer303Btn) {
+        timeLeft = timeLeft - 10;
+        scoreMessage.textContent = "Your score is: " + score;
+        displayAllDone();  
+      }; 
+  });
+  answer304Btn.addEventListener("click", function (event) {
+    event.preventDefault();
+    if (event.target === answer304Btn) {
+      score = score + 10;
+      scoreMessage.textContent = "Your score is: " + score;
+      displayAllDone(); 
     }; 
 });
 };
@@ -188,7 +255,7 @@ function countdown() {
 
     timeLeft--;
     timerEl.textContent = "Time: " + timeLeft;
-    if(timeLeft === 0) {
+    if(timeLeft <= 0) {
       clearInterval(timeInterval);
       displayAllDone();
     }
@@ -196,6 +263,7 @@ function countdown() {
 }
 //card displayed when time=0
 function displayAllDone() {
+  timeLeft = 0
   quizEl.replaceChildren();
   quizEl.appendChild(allDoneMessage);
   quizEl.appendChild(scoreMessage);
@@ -204,8 +272,7 @@ function displayAllDone() {
   inputName.after(submitNameBtn);
   quizEl.setAttribute("style", "text-align: left");
 
-  submitNameBtn.addEventListener("click", function (event) {
-    event.preventDefault();
+  submitNameBtn.addEventListener("click", function () {
     //console.log(userName);
     //console.log(score);
     var userInfoObj = [
@@ -215,11 +282,8 @@ function displayAllDone() {
     var userInfo = JSON.parse(localStorage.getItem("userInfo") || `[]`);
     userInfo.push(userInfoObj);
     localStorage.setItem("userInfo", JSON.stringify(userInfo));
-    window.location.href = "./assets/highscores.html" 
+    window.location.href = "../m4c-coding_quiz/assets/highscores.html";
   })
-};
-
-
-
+}; 
 
 displayStart ();
