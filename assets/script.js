@@ -282,7 +282,7 @@ function displayAllDone() {
     var userInfo = JSON.parse(localStorage.getItem("userInfo") || `[]`);
     userInfo.push(userInfoObj);
     localStorage.setItem("userInfo", JSON.stringify(userInfo));
-    window.location.href = "../m4c-coding_quiz/assets/highscores.html";
+    window.location.href = "./assets/highscores.html";
   })
 }; 
 
