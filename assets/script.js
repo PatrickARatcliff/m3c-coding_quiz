@@ -53,6 +53,133 @@ function displayStart () {
     displayQuiz1();
   });
 };
+//create and style message quiz
+
+//QUESTION 1
+//question 1 variables, content, styling
+var question1 = document.createElement("h2");
+question1.textContent = "Commonly used dat types DO NOT include:";
+question1.setAttribute("style", "text-align: left");
+var answer101Btn = document.createElement("button");
+answer101Btn.innerHTML = "1. strings";
+answer101Btn.type = "answer";
+answer101Btn.name = "answer101";
+var answer102Btn = document.createElement("button");
+answer102Btn.innerHTML = "2. booleans";
+answer102Btn.type = "answer";
+answer102Btn.name = "answer102";
+var answer103Btn = document.createElement("button");
+answer103Btn.innerHTML = "3. alerts";
+answer103Btn.type = "answer";
+answer103Btn.name = "answer103";
+var answer104Btn = document.createElement("button");
+answer104Btn.innerHTML = "4. numbers";
+answer104Btn.type = "answer";
+answer104Btn.name = "answer104";
+
+//card displayed for question 1
+function displayQuiz1 () {
+  quizEl.replaceChildren();
+  quizEl.setAttribute("style", "disply: block")
+  quizEl.appendChild(question1);
+  quizEl.appendChild(answer101Btn);
+  quizEl.appendChild(answer102Btn);
+  quizEl.appendChild(answer103Btn);
+  quizEl.appendChild(answer104Btn);
+  quizEl.setAttribute("style", "text-align: left");
+
+  answer101Btn.addEventListener("click", function (event) {
+    event.preventDefault();
+    if (event.target === answer101Btn) {
+      timeLeft = timeLeft - 10;
+      displayQuiz2(); 
+    }; 
+});
+  answer102Btn.addEventListener("click", function (event) {
+    event.preventDefault();
+    if (event.target === answer102Btn) {
+      timeLeft = timeLeft - 10;
+      displayQuiz2(); 
+    }; 
+});
+  answer103Btn.addEventListener("click", function (event) {
+      event.preventDefault();
+      if (event.target === answer103Btn) {
+        score = score + 10;
+        displayQuiz2(); 
+      }; 
+  });
+  answer104Btn.addEventListener("click", function (event) {
+    event.preventDefault();
+    if (event.target === answer104Btn) {
+      timeLeft = timeLeft - 10;
+      displayQuiz2(); 
+    }; 
+});
+};
+
+//QUESTION 2
+//question 2 variables, content, styling
+var question2 = document.createElement("h2");
+question2.textContent = "Arrays in JavaScript can be used to store ___.";
+question2.setAttribute("style", "text-align: left");
+var answer201Btn = document.createElement("button");
+answer201Btn.innerHTML = "1. numbers and strings";
+answer201Btn.type = "answer";
+answer201Btn.name = "answer201";
+var answer202Btn = document.createElement("button");
+answer202Btn.innerHTML = "2. other arrays";
+answer202Btn.type = "answer";
+answer202Btn.name = "answer202";
+var answer203Btn = document.createElement("button");
+answer203Btn.innerHTML = "3. booleans";
+answer203Btn.type = "answer";
+answer203Btn.name = "answer203";
+var answer204Btn = document.createElement("button");
+answer204Btn.innerHTML = "4. all of the above";
+answer204Btn.type = "answer";
+answer204Btn.name = "answer204";
+//card displayed for question 2
+//
+function displayQuiz2 () {
+  quizEl.replaceChildren();
+  quizEl.setAttribute("style", "disply: block")
+  quizEl.appendChild(question2);
+  quizEl.appendChild(answer201Btn);
+  quizEl.appendChild(answer202Btn);
+  quizEl.appendChild(answer203Btn);
+  quizEl.appendChild(answer204Btn);
+  quizEl.setAttribute("style", "text-align: left");
+
+  answer201Btn.addEventListener("click", function (event) {
+    event.preventDefault();
+    if (event.target === answer201Btn) {
+      timeLeft = timeLeft - 10;
+      //displayQuiz3(); 
+    }; 
+});
+  answer202Btn.addEventListener("click", function (event) {
+    event.preventDefault();
+    if (event.target === answer202Btn) {
+      score = score + 10;
+      //displayQuiz3(); 
+    }; 
+});
+  answer203Btn.addEventListener("click", function (event) {
+      event.preventDefault();
+      if (event.target === answer203Btn) {
+        timeLeft = timeLeft - 10;
+        //displayQuiz3(); 
+      }; 
+  });
+  answer204Btn.addEventListener("click", function (event) {
+    event.preventDefault();
+    if (event.target === answer204Btn) {
+      timeLeft = timeLeft - 10;
+      //displayQuiz3(); 
+    }; 
+});
+};
 
 //timer and run funtion at time=0
 function countdown() {
@@ -93,47 +220,6 @@ function displayAllDone() {
 };
 
 
-//create and style message quiz
-//question 1 variables, content, styling
-var question1 = document.createElement("h2");
-question1.textContent = "Commonly used dat types DO NOT include:";
-question1.setAttribute("style", "text-align: left");
-var answer101Btn = document.createElement("button");
-answer101Btn.innerHTML = "1. strings";
-answer101Btn.type = "answer";
-answer101Btn.name = "answer101";
-var answer102Btn = document.createElement("button");
-answer102Btn.innerHTML = "2. booleans";
-answer102Btn.type = "answer";
-answer102Btn.name = "answer102";
-var answer103Btn = document.createElement("button");
-answer103Btn.innerHTML = "3. alerts";
-answer103Btn.type = "answer";
-answer103Btn.name = "answer103";
-var answer104Btn = document.createElement("button");
-answer104Btn.innerHTML = "4. numbers";
-answer104Btn.type = "answer";
-answer104Btn.name = "answer104";
 
-
-//card displayed for question 1
-function displayQuiz1 () {
-  quizEl.replaceChildren();
-  quizEl.setAttribute("style", "disply: block")
-  quizEl.appendChild(question1);
-  quizEl.appendChild(answer101Btn);
-  quizEl.appendChild(answer102Btn);
-  quizEl.appendChild(answer103Btn);
-  quizEl.appendChild(answer104Btn);
-  quizEl.setAttribute("style", "text-align: left");
-  answer103Btn.addEventListener("click", function (event) {
-      event.preventDefault();
-      if (event.target === answer103Btn) {
-        score = score + 10;
-        timeLeft = timeLeft - 10;
-        //displayAllDone(); 
-      }
-    });
-};
 
 displayStart ();
